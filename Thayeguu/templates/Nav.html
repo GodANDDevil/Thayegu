@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Nav.css' %}">
+</head>
+<body>
+    <div id="nav">
+        <div id="logo">
+            <img src="{% static 'Logo.png' %}" alt="Img not found">
+        </div>
+        <div id="pages">
+            <a href="{% url 'Home' %}">Home</a>
+            <a href="{% url 'Sell' %}">Sell</a>
+            <a href="{% url 'Contact' %}">Help/Contact</a>
+            <a href="{% url 'About' %}">About Us</a>
+            <a href="{% url 'Login' %}">Login</a>
+        </div>
+    </div>
+</body>
+</html>

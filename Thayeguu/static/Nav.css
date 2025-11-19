@@ -1,0 +1,21 @@
+#nav{
+    position: relative;
+    width: 100%;
+    z-index: 1000;
+}
+img{
+    float: left;
+    width: 70px;
+    height: 70px;
+    padding-left: 24px;
+}
+#pages{
+    float: right;
+    padding: 12px;
+    font-size: 24px;
+}
+a{
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+}
