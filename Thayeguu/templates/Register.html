@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Register.css' %}">
+</head>
+<body>
+    {% include 'FristNav.html' %}
+    <div class="wrapper">
+        <form action="" method="post" onsubmit="return validation()" class="form-box">
+            {% csrf_token %}
+            <h1>Registration Form</h1>
+
+            <input type="text" id="phonenumber" name="phonenumber" placeholder="Phone Number">
+            <input type="text" id="name" name="name" placeholder="Full Name">
+            <input type="email" id="gmail" name="gmail" placeholder="Gmail">
+            <input type="password" id="password" name="password" placeholder="Password">
+            <input type="password" id="cpassword" name="cpassword" placeholder="Confirm Password">
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+    <script>
+        function validation(){
+            //Phone Number Validation
+            var phonenumber = document.getElementById("phonenumber").value;
+            if (phonenumber == ""){
+                alert("Phone Number is required");
+                return false;
+            }else if (phonenumber.length != 10){
+                alert("Phone Number must be 10 digits");
+                return false;
+            }
+
+            //Name Validation
+            var name = document.getElementById("name").value;
+            if(name == ""){
+                alert("Full Name is required");
+                return false;
+            }
+
+            //Email Validation
+            var email = document.getElementById("gmail").value;
+            var slice1 = email.slice(-10);
+            if(email == ""){
+                alert("Email is required");
+                return false;
+            }else if(slice1 != "@gmail.com"){
+                alert("Email must be a Gmail address");
+            }
+
+            //Password Validation
+            var password = document.getElementById("password").value;
+            if(password == ""){
+                alert("Password is required");
+                return false;
+            }else if(password.length < 8){
+                alert("Password must be at least 8 characters long");
+            }
+            //Confirm Password Validation
+            var cpassword = document.getElementById("cpassword").value;
+            if (cpassword == ""){
+                alert("Confirm Password is required");
+                return false;
+            }else if (password != cpassword){
+                alert("Passwords do not match");
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>

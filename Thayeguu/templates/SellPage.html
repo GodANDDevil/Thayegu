@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'SellPage.css' %}">
+</head>
+<body>
+    {% include 'Nav.html' %}
+    <div class="wrapper">
+        <form action="" method="post" enctype="multipart/form-data" onsubmit="return validation()" class="form-box">
+            {% csrf_token %}
+            <h1>Sell Order</h1>
+
+            <input type="text" id="productname" name="productname" placeholder="Product Name">
+            <textarea id="productdescription" rows="5" cols="40" name="productdescription" placeholder="Probuct Description"></textarea>
+            <input type="number" id="price" name="price" placeholder="Price">
+            <input type="file" id="productimage" name="productimage">
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script>
+        function validation(){
+            var productname=document.getElementById('productname').value;
+            var productdescription=document.getElementById('productdescription').value;
+            var price=document.getElementById('price').value;
+
+            if(productname==""){
+                alert("Please enter the product name");
+                return false;
+            }
+            if(productdescription==""){
+                alert("Please enter the product description");
+                return false;
+            }
+            if(price==""){
+                alert("Please enter the price");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>

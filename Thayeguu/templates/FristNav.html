@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'Nav.css' %}">
+    <link rel="stylesheet" href="{% static 'FristNav.css' %}">
 </head>
 <body>
     <div id="nav">
@@ -13,13 +13,12 @@
             <img src="{% static 'Logo.png' %}" alt="Img not found">
         </div>
         <div id="pages">
-            <a href="{% url 'Home' %}">Home</a>
-            <a href="{% url 'Sell' %}">Sell</a>
-            <a href="{% url 'Cart' %}">Cart</a>
-            <a href="{% url 'Contact' %}">Help/Contact</a>
-            <a href="{% url 'About' %}">About Me</a>
-            <a href="{% url 'Frist' %}">Logout</a>
-            
+            <div id="Home">Home</div>
+            <div id="Sell">Sell</div>
+            <!-- <a href="{% url 'Contact' %}">Help/Contact</a>
+            <a href="{% url 'About' %}">About Me</a> -->
+            <a href="{% url 'Login' %}">Login</a>
+            <a href="{% url 'Register' %}">Register</a>
         </div>
     </div>
 </body>

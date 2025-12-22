@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.product_name }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Product.css' %}">
+</head>
+
+<body>
+
+    <div id="nav">
+        {% include 'Nav.html' %}
+    </div>
+
+    <div class="product-container">
+
+        <div class="product-image">
+            <img src="{{ product.product_image.url }}" alt="{{ product.product_name }}">
+        </div>
+
+        <div class="product-details">
+            <br><br><br>
+            <h1>{{ product.product_name }}</h1>
+
+            <p class="product-price">₹ {{ product.product_price }}</p>
+
+            <p class="product-description">
+                {{ product.product_description }}
+            </p>
+            <button id="paynowbtn" class="pay-now-btn">Pay now</button>
+            <a href="{% url 'AddToCart' product.id%}"><button class="pay-now-btn" id="add_cart">Add To Cart</button></a>
+            <div id="imageContainer"></div>
+            <div id="uploadContainer"></div>
+            <div id="confirmContainer"></div>
+        </div>
+    </div>
+   <script>
+    const payNowBtn = document.getElementById("paynowbtn");
+    const container = document.getElementById("imageContainer");
+    const uploadContainer = document.getElementById("uploadContainer");
+    const confirmContainer = document.getElementById("confirmContainer");
+    payNowBtn.addEventListener("click", function () {
+        const img = document.createElement("img");
+        img.src = "{{ product.product_payment_method.url }}";
+        img.alt = "Payment Method";
+        container.innerHTML = "";
+        container.appendChild(img);
+        uploadContainer.innerHTML = "";
+        const fileInput = document.createElement("input");
+        fileInput.type = "file";
+        fileInput.id = "paymentupload";
+        fileInput.accept = "image/*";
+        fileInput.className = "pay-now-btn";
+        fileInput.style.marginTop = "20px";
+        uploadContainer.appendChild(fileInput);
+        fileInput.addEventListener("change", function () {
+            const file = fileInput.files[0];
+            if (file && file.type.startsWith("image/")) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const img = document.createElement("img");
+                    img.src = e.target.result;
+                    img.alt = "Uploaded Payment Image";
+                    container.innerHTML = "";
+                    container.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            } else {
+                container.innerHTML = "<p>Please upload a valid image file.</p>";
+            }
+        });
+        confirmContainer.innerHTML = "";
+        const confirmBtn = document.createElement("button");
+        confirmBtn.textContent = "Confirm Payment";
+        confirmBtn.className = "pay-now-btn";
+
+        confirmBtn.addEventListener("click", function () {
+            alert("Payment Sent");
+        });
+
+        confirmContainer.appendChild(confirmBtn);
+    });
+</script>
+
+</body>
+
+
+
+</html>

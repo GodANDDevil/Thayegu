@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'Cart.css' %}">
+</head>
+<body>
+  <div>
+    {% include 'Nav.html' %}
+  </div>
+  <div class="cart-container">
+    <h1>Your Cart</h1>
+    {% if cart_items %}
+      <table>
+        <tr>
+          <th>Product</th>
+          <th>id</th>
+          <th>Price</th>
+        </tr>
+        {% for item in cart_items %}
+        <tr>
+          <td>{{ item.product.product_name }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>₹ {{ item.product.product_price }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      <h2>Total: ₹ {{ total }}</h2>
+    {% else %}
+      <p>Your cart is empty.</p>
+    {% endif %}
+  </div>
+  <div id="payment">
+    <img src="{% static 'Esewa.png' %}" alt="Img not found">
+    <h1>Put the Screenshot of Your Payment:</h1>
+    <form action="{% url 'ClearCart' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="payment_screenshot" id="paymentupload">
+        <button type="submit">Submit</button>
+    </form>
+</div>
+  <script>
+  const form = document.querySelector('#payment form');
+  form.addEventListener('submit', function() {
+    alert("Your Payment is Successful!!\nYour Product will be Delivered Soon");
+  });
+</script>
+</body>
+</html>

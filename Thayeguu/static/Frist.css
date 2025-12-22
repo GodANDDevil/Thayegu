@@ -1,0 +1,22 @@
+#text{
+    /* margin-top: 100px; */
+    padding: 50px;
+    text-align: center;
+    font-size: 40px;
+}
+#preview{
+    display: flex;
+    justify-content: center;
+    width: 1000px;
+    height: 500px;
+    /* background-color: black; */
+    color: white;
+    margin: auto;
+    border-radius:20px ;
+}
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}

@@ -1,0 +1,15 @@
+#aboutsection {
+    width: 100%;
+    min-height: 100vh; /* fills full screen height */
+    margin: 0;
+    background-color: #f2f2f2;
+    padding: 60px 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #333333;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* vertically center content */
+    align-items: center;     /* horizontally center content */
+}

@@ -1,0 +1,92 @@
+#header {
+    padding: 60px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #6a5acd, #8a7df0);
+    color: white;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+}
+
+#header h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+#header p {
+    font-size: 16px;
+    max-width: 700px;
+    margin: 8px auto;
+    line-height: 1.5;
+}
+
+/* Wrapper */
+.wrapper {
+    width: 100%;
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f5f2ec;
+    padding: 40px 0;
+}
+
+/* Form Box */
+.form-box {
+    width: 450px;
+    padding: 35px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.form-box h2 {
+    margin-bottom: 25px;
+    font-size: 28px;
+    color: #333;
+}
+
+/* Inputs */
+.form-box input,
+.form-box textarea {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: 0.2s;
+}
+
+.form-box input:focus,
+.form-box textarea:focus {
+    border-color: #6a5acd;
+    box-shadow: 0 0 6px rgba(106, 90, 205, 0.4);
+}
+
+/* Placeholder */
+input::placeholder,
+textarea::placeholder {
+    color: #666;
+    font-weight: 500;
+}
+
+/* Button */
+.form-box button {
+    width: 100%;
+    padding: 14px;
+    background: #6a5acd;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.form-box button:hover {
+    background: #5848c2;
+    transform: translateY(-2px);
+}

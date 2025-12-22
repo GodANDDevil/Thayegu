@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frist Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Frist.css' %}">
+</head>
+<body>
+    <div id="Nav">
+        {% include 'FristNav.html' %}
+    </div>
+    <div id="text">
+        <h1>Welcome to  “Thayegu” (थयेगु)</h1>
+        <p>Means: To Go / To Walk / To Move</p>
+    </div>
+    <div id="preview">
+        <div id ="ads">
+        {% for a in ads %}
+        <div class="slide">
+                <img src="{{ a.ads_image.url }}" alt="Img not found">
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+    <script>
+        const slides = document.querySelectorAll('#ads .slide');
+        let index = 0;
+
+        slides.forEach(slide => slide.style.display = 'none');
+
+        function showSlide() {
+            slides.forEach(slide => slide.style.display = 'none');
+            slides[index].style.display = 'block';
+            index = (index + 1) % slides.length;
+        }
+
+        showSlide();
+        setInterval(showSlide, 5000);
+    </script>
+</body>
+</html>
